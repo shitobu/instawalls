@@ -53,10 +53,17 @@ const App = () => {
   };
 
   const handleWallpaperUpload = (event) => {
-    const files = Array.from(event.target.files);
-    const uploadedWallpapers = files.map((file) => ({ id: Date.now() + Math.random(), url: URL.createObjectURL(file) }));
-    setWallpapers((prev) => [...prev, ...uploadedWallpapers]);
-  };
+  const files = Array.from(event.target.files);
+  const uploadedWallpapers = files.map((file) => ({
+    id: Date.now() + Math.random(),
+    url: URL.createObjectURL(file),
+  }));
+
+  setWallpapers((prev) => {
+    const updatedWallpapers = [...prev, ...uploadedWallpapers];
+    localStorage.setItem('wallpapers', JSON.stringify(updatedWallpapers));
+    return updatedWallpapers;
+  });
 
   const handleDeleteWallpaper = (id) => {
     setWallpapers((prev) => prev.filter((wallpaper) => wallpaper.id !== id));
