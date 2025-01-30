@@ -18,11 +18,19 @@ const App = () => {
   const [tempProfile, setTempProfile] = useState(profile);
 
   useEffect(() => {
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
-    localStorage.setItem('profile', JSON.stringify(profile));
-    localStorage.setItem('wallpapers', JSON.stringify(wallpapers));
-  }, [darkMode, profile, wallpapers]);
+  try {
+    const storedDarkMode = JSON.parse(localStorage.getItem('darkMode'));
+    const storedProfile = JSON.parse(localStorage.getItem('profile'));
+    const storedWallpapers = JSON.parse(localStorage.getItem('wallpapers'));
 
+    if (storedDarkMode !== null) setDarkMode(storedDarkMode);
+    if (storedProfile !== null) setProfile(storedProfile);
+    if (storedWallpapers !== null) setWallpapers(storedWallpapers);
+  } catch (error) {
+    console.error("Error loading data:", error);
+  }
+}, []);
+  
   const handleProfileUpdate = (event) => {
     const { name, value } = event.target;
     setTempProfile((prev) => ({ ...prev, [name]: value }));
