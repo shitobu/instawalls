@@ -2,7 +2,7 @@
   "name": "react-wallpaper-app",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://your-github-username.github.io/your-repository-name",
+  "homepage": "/",
   "dependencies": {
     "framer-motion": "^10.0.0",
     "lucide-react": "^0.24.0",
