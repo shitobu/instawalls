@@ -2,7 +2,6 @@
   "name": "react-wallpaper-app",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://github.com/shitobu/instawalls",
   "dependencies": {
     "framer-motion": "^12.0.6",
     "lucide-react": "^0.474.0",
